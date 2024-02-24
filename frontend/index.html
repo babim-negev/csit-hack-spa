@@ -27,30 +27,22 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-4">
 					<li class="nav-item">
-						<a class="nav-link" data-value="about" href="#">About</a>
+						<a class="nav-link" data-value="about" href="#">О нас</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-value="portfolio" href="#">Portfolio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-value="blog" href="#">Blog</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-value="team" href="#"> Team</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-value="contact" href="#">Contact</a>
+						<a class="nav-link" data-value="contact" href="#">Контакты</a>
 					</li>
 
 					<!-- регистрация и авторизация -->
 					<li class="nav-item btn-register">
 						<!-- регистрация -->
-						<button class="" href="#" data-bs-toggle="modal" data-bs-target="#authModalRegister">Регистрация</button>
+						<button id ="aut1" class="btn btn-outline-success me-2" type="button" href="#" data-bs-toggle="modal" data-bs-target="#authModalRegister">Регистрация</button>
 					</li>
 					<li class="nav-item btn-log-in">
 						<!-- регистрация -->
-						<button class="" href="#" data-bs-toggle="modal" data-bs-target="#authModalEnter">Авторизация</button>
+						<button id ="in1" class="btn btn-outline-success me-2" type="button" href="#" data-bs-toggle="modal" data-bs-target="#authModalEnter">Авторизация</button>
 					</li>
+
 				</ul>
 
 				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
@@ -74,8 +66,8 @@
 											<label for="password" class="form-label">Пароль</label>
 											<input type="password" class="form-control" id="password" />
 										</div>
-										<button type="submit" class="btn btn-primary">Войти</button>
 									</form>
+									<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
 								</div>
 							</div>
 						</div>
@@ -100,83 +92,35 @@
 											<label for="password" class="form-label">Пароль</label>
 											<input type="password" class="form-control" id="password" />
 										</div>
-										<button type="submit" class="btn btn-primary">Войти</button>
 									</form>
+									<button  class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Modal окно корзина-->
-					<li class="nav-item">
-						<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i class="fa-solid fa-cart-arrow-down"></i></a>
-
-						<!-- modal у корзины -->
-						<div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							<!-- modal-xl убери и станет меньше -->
-							<div class="modal-dialog modal-xl">
-								<div class="modal-content">
-									<!-- смотри задний фон в background на bootstrap -->
-									<div class="modal-header bg-warning text-black">
-										<!-- заголовок окна modal -->
-										<h1 class="modal-title fs-5" id="staticBackdropLabel">Корзина</h1>
-
-										<!-- кнопка закрытия -->
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-
-									<!-- текст внутри modal -->
-									<div class="modal-body">
-										<p>Ваша корзина содержит <span id="cart-item-count">0</span> элементов.</p>
-										<!-- таблица table -->
-										<table class="table">
-											<!-- голова таблицы -->
-											<thead>
-												<tr>
-													<th scope="col">№</th>
-													<th scope="col">Продавец</th>
-													<th scope="col">Товар</th>
-													<th scope="col">Цена</th>
-													<th scope="col">Изображения</th>
-												</tr>
-											</thead>
-											<!-- тело таблицы -->
-											<tbody>
-												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>
-														<a href="#">laptop</a>
-													</td>
-													<td>$35.99</td>
-													<td>
-														<img src="img/products/laptop1.jpg" alt="" />
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Вова</td>
-													<td>
-														<a href="#">laptop</a>
-													</td>
-													<td>$25.99</td>
-													<td>
-														<img src="img/products/laptop1.jpg" alt="" />
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-
-									<!-- кнопки ниже закрыть и принять -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" id="clearCartBtn">Очистить корзину</button>
-										<button type="button" class="btn btn-success">Оплатить покупку</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id = "person" style="display: none;"> <i class="fa-regular fa-user" style="color: #ffffff;"></i> </a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="#">Отжаться 20 раз</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Подтянуться 10 раз</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<button type="submit" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-target="#OutRegister" onclick="outButton()" aria-label="Close">Выйти</button>
+								<!--<a class="dropdown-item" href="#">Стать скуфом</a>-->
+							</li>
+						</ul>
 					</li>
+
+
+
 				</ul>
 				<!-- Поиск search справа -->
 				<form class="d-flex" role="search">
