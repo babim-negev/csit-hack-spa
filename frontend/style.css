@@ -87,3 +87,26 @@ a {
 	background: #0fc928f3;
 	color: #ffffff;
 }
+
+.course-card {
+	background-color: #ffffff; /* Белый цвет фона */
+	border-radius: 10px; /* Закругление углов */
+	padding: 20px; /* Внутренний отступ */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+/* Изменение размера карточки на различных экранах */
+@media (max-width: 576px) {
+	.courses-card {
+		padding: 10px; /* Уменьшение внутреннего отступа на мобильных устройствах */
+	}
+}
+
+div,
+p {
+	margin-bottom: 0; /*убрать отступ p*/
+}
+
+.main-content {
+	margin-top: 20px; /* отступ с самого верха страницы */
+}
