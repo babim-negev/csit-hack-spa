@@ -57,6 +57,8 @@ mycourses.addEventListener('click', function () {
 	// You can perform any desired actions here
 	var hz = document.getElementById('coursesContainer')
 	hz.style.display = 'none'
+	var myc = document.getElementById('myCoursesContainer')
+	myc.style.display = 'block'
 })
 
 function outButton() {
@@ -75,5 +77,39 @@ document.addEventListener('DOMContentLoaded', function () {
 	dropdownItem.addEventListener('click', function () {
 		var container = document.querySelector('.container')
 		container.style.display = 'block' // Показать содержимое
+	})
+})
+
+var addToMyCoursesButtons = document.querySelectorAll('.add-to-my-courses')
+
+// Добавляем обработчик события нажатия на каждую кнопку
+addToMyCoursesButtons.forEach(function (button) {
+	button.addEventListener('click', function () {
+		// Находим родительский элемент курса, который содержит информацию о курсе
+		var courseCard = this.closest('.course-card')
+
+		// Создаем копию элемента курса
+		var clonedCourse = courseCard.cloneNode(true)
+
+		// Находим контейнер "Мои курсы"
+		var myCoursesContainer = document.getElementById('myCoursesContainer')
+
+		// Добавляем скопированный курс в контейнер "Мои курсы"
+		myCoursesContainer.appendChild(clonedCourse)
+
+		// Устанавливаем атрибут disabled для кнопки
+		this.disabled = true
+
+		this.textContent = 'Вы уже записаны'
+
+		var clonedButton = clonedCourse.querySelector('.add-to-my-courses')
+		if (clonedButton) {
+			clonedButton.remove()
+		}
+
+		var clonedPasswordInput = clonedCourse.querySelector('.password-input')
+		if (clonedPasswordInput) {
+			clonedPasswordInput.remove()
+		}
 	})
 })
