@@ -13,12 +13,10 @@ app = FastAPI()
 JWT_SECRET = os.getenv("HACH_JWT_SECRET", "testsecret")
 
 @app.post("/register")
-def read_item(usr: UserRegister):
+def register(usr: UserRegister):
     return jwt.encode({"login": usr.login}, JWT_SECRET)
 
 try:
-    repo = Repo('./testrepo')
+    repo = Repo('./gitrepos/testrep3.git')
 except NoSuchPathError:
-    repo = Repo.init('./testrepo')
-
-print(repo.head.commit.tree)
+    repo = Repo.init('./gitrepos/testrep3.git', bare=True)
