@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<!-- подключение bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+		<!-- подключение google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+
+		<!-- подключим css -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="#">SkufCourse</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- как container-fluid -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-4">
+					<li class="nav-item">
+						<a class="nav-link" data-value="about" href="#">О нас</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-value="contact" href="#">Контакты</a>
+					</li>
+
+					<!-- регистрация и авторизация -->
+					<li class="nav-item btn-register">
+						<!-- регистрация -->
+						<button id="aut1" class="btn btn-outline-success me-2" type="button" href="#" data-bs-toggle="modal" data-bs-target="#authModalRegister">Регистрация</button>
+					</li>
+					<li class="nav-item btn-log-in">
+						<!-- регистрация -->
+						<button id="in1" class="btn btn-outline-success me-2" type="button" href="#" data-bs-toggle="modal" data-bs-target="#authModalEnter">Авторизация</button>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					<!-- МОДАЛЬНЫЕ ОКНА ДЛЯ РЕГИСТРАЦИИ И АВТОРИЗАЦИИ -->
+
+					<div class="modal fade" id="authModalEnter" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="authModalLabel">Авторизация</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<!-- Форма для входа/регистрации -->
+									<form>
+										<div class="mb-3">
+											<label for="username" class="form-label">Логин</label>
+											<input type="text" class="form-control" id="username" />
+										</div>
+										<div class="mb-3">
+											<label for="password" class="form-label">Пароль</label>
+											<input type="password" class="form-control" id="password" />
+										</div>
+									</form>
+									<button id="voiti1" type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- МОДАЛЬНЫЕ ОКНА ДЛЯ РЕГИСТРАЦИИ -->
+					<div class="modal fade" id="authModalRegister" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="authModalLabel">Регистрация</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<!-- Форма для входа/регистрации -->
+									<form>
+										<div class="mb-3">
+											<label for="username" class="form-label">Логин</label>
+											<input type="text" class="form-control" id="username" />
+										</div>
+										<div class="mb-3">
+											<label for="password" class="form-label">Пароль</label>
+											<input type="password" class="form-control" id="password" />
+										</div>
+									</form>
+									<button id="voiti2" class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal окно корзина-->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="person" style="display: none"> <i class="fa-regular fa-user" style="color: #ffffff"></i> </a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="#">Все курсы</a>
+							</li>
+							<li>
+								<a id="myCourses" class="dropdown-item" href="#">Мои курсы</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<button id="outButton" type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Выйти</button>
+								<!--<a class="dropdown-item" href="#">Стать скуфом</a>-->
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<!-- Поиск search справа -->
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+
+		<!-- НАШИ КУРСЫ -->
+		<section class="main-content">
+			<!-- Курсы -->
+			<div class="container" id="coursesContainer" style="display: none">
+				<div class="row">
+					<!-- bootstrap использует 12-колоночную сетку, поэтому lg-4 означает поделить на 4 и теперь у нас будет 4 части из 12-колоночной сетки (то есть 1/3) то есть 3 штуки в ряд-->
+					<div class="col-lg-12 col-sm-12 mb-3">
+						<div class="course-card">
+							<div class="course-details">
+								<h4><a>Математический анализ</a></h4>
+								<p>Математический анализ для студентов 1 курса!</p>
+								<p>Преподаватель: Сахно Людмила Владимировна</p>
+								<p>Группа: 151</p>
+								<div class="course-bottom-details d-flex justify-content-between">
+									<div class="password-input">
+										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
+									</div>
+									<div class="course-links">
+										<button class="add-to-my-courses">Записаться на курс</button>
+										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-sm-12 mb-3">
+						<div class="course-card">
+							<div class="course-details">
+								<h4><a>Машинно-зависимые языки программирования</a></h4>
+								<p>МЗЯП для студентов 2 курса!</p>
+								<p>Преподаватель: Федорова Антонина Гавриловна</p>
+								<p>Курс: 2</p>
+								<p>Группа: 251</p>
+								<div class="course-bottom-details d-flex justify-content-between">
+									<div class="password-input">
+										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
+									</div>
+									<div class="course-links">
+										<button class="add-to-my-courses">Записаться на курс</button>
+										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-sm-12 mb-3">
+						<div class="course-card">
+							<div class="course-details">
+								<h4><a>Алгебра и геометрия</a></h4>
+								<p>АлГем для студентов 1 курса!</p>
+								<p>Преподаватель: Букушева Алия Владимировна</p>
+								<p>Курс: 1</p>
+								<p>Группа: 151</p>
+								<div class="course-bottom-details d-flex justify-content-between">
+									<div class="password-input">
+										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
+									</div>
+									<div class="course-links">
+										<button class="add-to-my-courses">Записаться на курс</button>
+										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-sm-12 mb-3">
+						<div class="course-card">
+							<div class="course-details">
+								<h4><a>Теоретическая информатика</a></h4>
+								<p>Теоретическая математика для студентов 1 курса!</p>
+								<p>Преподаватель: Иванов Александр Сергеевич</p>
+								<p>Курс: 1</p>
+								<p>Группа: 151</p>
+								<div class="course-bottom-details d-flex justify-content-between">
+									<div class="password-input">
+										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
+									</div>
+									<div class="course-links">
+										<button class="add-to-my-courses">Записаться на курс</button>
+										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div id="myCoursesContainer" class="container" style="display: none">
+			<div class="row">
+				<!-- Здесь будут отображаться курсы, добавленные пользователем -->
+			</div>
+		</div>
+
+		<div class="container1">
+			<div class="row">
+				<div class="col">
+					<h2>Добро пожаловать на нашу образовательную платформу SkufCourse!</h2>
+					<p>Здесь вы найдете широкий выбор курсов по различным предметам и областям знаний.</p>
+					<p>Наша цель - помочь студентам учиться и развиваться в удобной и интересной форме.</p>
+				</div>
+				<div class="col">
+					<img src="imgs/1.jpg" alt="Изображение" class="img-fluid" />
+				</div>
+			</div>
+		</div>
+
+		<!-- О нас -->
+		<!-- about section -->
+		<!-- <div class="about" id="about">
+			<div class="container">
+				<h1 class="text-center">About Me</h1>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12">
+						<img src="images/team-3.jpg" class="img-fluid" />
+						<span class="text-justify">S.Web Developer</span>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-12 desc">
+						<h3>D.John</h3>
+						<p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- FOOTER -->
+		<footer>
+			<section class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-6">
+							<h4>Информация</h4>
+							<ul class="list-unstyled">
+								<li><a href="#">Главная</a></li>
+								<li><a href="#">О сайте</a></li>
+								<li><a href="#">Контакты</a></li>
+							</ul>
+						</div>
+
+						<div class="col-md-3 col-6">
+							<h4>Время работы</h4>
+							<ul class="list-unstyled">
+								<li>Саратов, ул. Скуфа</li>
+							</ul>
+						</div>
+
+						<div class="col-md-3 col-6">
+							<h4>Контакты</h4>
+							<ul class="list-unstyled">
+								<li>
+									<a href="tel:+79432532125">+7 943 253-21-25</a>
+								</li>
+								<li>
+									<a href="tel:+79432232125">+7 925 253-26-15</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="col-md-3 col-6">
+							<h4>Мы в сети:</h4>
+							<div class="footer-icons">
+								<a href="#"><i class="fa-brands fa-vk"></i></a>
+								<a href="#"><i class="fa-brands fa-telegram" style="color: #74c0fc"></i></a>
+								<a href="#"><i class="fa-brands fa-youtube" style="color: #e3301c"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</footer>
+		<!-- Скрипты -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+		<script src="https://kit.fontawesome.com/ec796c5424.js" crossorigin="anonymous"></script>
+
+		<!-- our scripts -->
+		<script src="script.js"></script>
+	</body>
+</html>
