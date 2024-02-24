@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg fixed-top">
+		<nav class="navbar navbar-expand-lg">
 			<a class="navbar-brand" href="#">SkufCourse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -42,19 +42,138 @@
 						<a class="nav-link" data-value="contact" href="#">Contact</a>
 					</li>
 
-					<div class="navbar-btns-register-enter">
+					<li class="nav-item btn-enter">
 						<!-- войти -->
 						<button class="btn btn-outline-success me-2" type="button">Войти</button>
+					</li>
+					<li class="nav-item btn-register">
 						<!-- регистрация -->
 						<button class="btn btn-outline-success me-2" type="button">Регистрация</button>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					<!-- МОДАЛЬНЫЕ ОКНА ДЛЯ РЕГИСТРАЦИИ И АВТОРИЗАЦИИ -->
+					<!-- Модальное окно для регистрации/авторизации -->
+					<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="authModalLabel">Авторизация</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<!-- Форма для входа/регистрации -->
+									<form>
+										<div class="mb-3">
+											<label for="username" class="form-label">Логин</label>
+											<input type="text" class="form-control" id="username" />
+										</div>
+										<div class="mb-3">
+											<label for="password" class="form-label">Пароль</label>
+											<input type="password" class="form-control" id="password" />
+										</div>
+										<button type="submit" class="btn btn-primary">Войти</button>
+									</form>
+								</div>
+							</div>
+						</div>
 					</div>
 
-					<!-- search  -->
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" />
-						<button class="btn btn-outline-success" type="submit">Поиск</button>
-					</form>
+					<!-- Изменение ваши ссылки "Регистрация" и "Авторизация", чтобы они вызывали модальное окно: -->
+					<!-- left top icons -->
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+								<i class="fa-regular fa-user"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Регистрация</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Авторизация</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<!-- Modal окно корзина-->
+					<li class="nav-item">
+						<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i class="fa-solid fa-cart-arrow-down"></i></a>
+
+						<!-- modal у корзины -->
+						<div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<!-- modal-xl убери и станет меньше -->
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<!-- смотри задний фон в background на bootstrap -->
+									<div class="modal-header bg-warning text-black">
+										<!-- заголовок окна modal -->
+										<h1 class="modal-title fs-5" id="staticBackdropLabel">Корзина</h1>
+
+										<!-- кнопка закрытия -->
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+
+									<!-- текст внутри modal -->
+									<div class="modal-body">
+										<p>Ваша корзина содержит <span id="cart-item-count">0</span> элементов.</p>
+										<!-- таблица table -->
+										<table class="table">
+											<!-- голова таблицы -->
+											<thead>
+												<tr>
+													<th scope="col">№</th>
+													<th scope="col">Продавец</th>
+													<th scope="col">Товар</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Изображения</th>
+												</tr>
+											</thead>
+											<!-- тело таблицы -->
+											<tbody>
+												<tr>
+													<th scope="row">1</th>
+													<td>Mark</td>
+													<td>
+														<a href="#">laptop</a>
+													</td>
+													<td>$35.99</td>
+													<td>
+														<img src="img/products/laptop1.jpg" alt="" />
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td>Вова</td>
+													<td>
+														<a href="#">laptop</a>
+													</td>
+													<td>$25.99</td>
+													<td>
+														<img src="img/products/laptop1.jpg" alt="" />
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<!-- кнопки ниже закрыть и принять -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" id="clearCartBtn">Очистить корзину</button>
+										<button type="button" class="btn btn-success">Оплатить покупку</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
 				</ul>
+				<!-- Поиск search справа -->
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
 			</div>
 		</nav>
 
