@@ -12,6 +12,10 @@ services:
       - git-repos:/app/gitrepos/
     expose:
       - 8000
+    ports:
+      - 7777:8000
+    environment:
+      - UVICORN_HOST=0.0.0.0
     depends_on:
       - postgres
   gitserver:
