@@ -1,10 +1,8 @@
 FROM python:3.12.1
 
-WORKDIR /app
+WORKDIR /code
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-COPY . .
+COPY app app
 
-EXPOSE 8000
-
-CMD ["uvicorn", "main:app"]
+CMD ["uvicorn", "app.main:app"]
