@@ -1,0 +1,21 @@
+
+services:
+  backend:
+    build: backend
+    expose:
+      - 8000
+  nginx:
+    image: nginx
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports: 
+      - 8080:80
+  gitserver:
+    image: rockstorm/git-server
+    volumes:
+      - git-repos:/srv/git
+    expose:
+      - 22
+
+volumes:
+  git-repos:
