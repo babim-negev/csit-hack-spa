@@ -15,7 +15,7 @@ class UserRegister(BaseModel):
     login: str
     passw: str
 
-router = APIRouter()
+router = APIRouter(tags=['user'])
 
 @router.post("/user/login")
 def user_login(usr_log: UserLogin):

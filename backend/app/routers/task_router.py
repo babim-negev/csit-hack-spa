@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+router = APIRouter(tags=['task'])
 
 @router.post("/course/task/create")
 def create_task(course_id: int):
