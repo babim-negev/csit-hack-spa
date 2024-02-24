@@ -3,7 +3,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: #f4f4f4;
+	background: black; /*черный фон*/
 }
 html,
 h1,
@@ -35,7 +35,7 @@ a {
 }
 
 .navbar {
-	background: #f97300;
+	background: #0d7b03eb;
 }
 .nav-link,
 .navbar-brand {
@@ -46,12 +46,44 @@ a {
 	margin-right: 1em !important;
 }
 .nav-link:hover {
-	background: #f4f4f4;
-	color: #f97300;
+	background: #00ff22f3;
+	color: #000200;
 }
 .navbar-collapse {
 	justify-content: flex-end;
 }
 .navbar-toggler {
 	background: #fff !important;
+}
+
+.navbar-btns-register-enter button {
+	color: #f4f4f4;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	/* Ваши стили здесь */
+}
+
+.navbar-btns-register-enter button:hover {
+	background: #0fc928f3;
+	color: #ffffff;
+}
+
+/* Стили для поля ввода и кнопки поиска */
+.d-flex input[type='search'],
+.d-flex button[type='submit'] {
+	/* Ваши стили здесь */
+	color: #f4f4f4;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.d-flex button[type='submit']:hover {
+	background: #0fc928f3;
+	color: #ffffff;
 }
