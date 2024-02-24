@@ -43,6 +43,10 @@ button2.addEventListener('click', function () {
 	button1.style.display = 'block'
 	button3.style.display = 'none'
 	hz.style.display = 'none'
+	var container = document.querySelector('.container1')
+	if (container) {
+		container.style.display = 'block'
+	}
 })
 
 var mycourses = document.getElementById('myCourses')
