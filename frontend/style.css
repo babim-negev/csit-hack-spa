@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+	padding: 0;
+	margin: 0;
+	background: black; /*черный фон*/
+}
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+	font-family: 'Raleway';
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+::-webkit-scrollbar {
+	width: 15px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: red;
+	border-radius: 10px;
+}
+
+.navbar {
+	background: #0d7b03eb;
+}
+.nav-link,
+.navbar-brand {
+	color: #f4f4f4;
+	cursor: pointer;
+}
+.nav-link {
+	margin-right: 1em !important;
+}
+.nav-link:hover {
+	background: #00ff22f3;
+	color: #000200;
+}
+.navbar-collapse {
+	justify-content: flex-end;
+}
+.navbar-toggler {
+	background: #fff !important;
+}
+
+.navbar-btns-register-enter button {
+	color: #f4f4f4;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	/* Ваши стили здесь */
+}
+
+.navbar-btns-register-enter button:hover {
+	background: #0fc928f3;
+	color: #ffffff;
+}
+
+/* Стили для поля ввода и кнопки поиска */
+.d-flex input[type='search'],
+.d-flex button[type='submit'] {
+	/* Ваши стили здесь */
+	color: #f4f4f4;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.d-flex button[type='submit']:hover {
+	background: #0fc928f3;
+	color: #ffffff;
+}
