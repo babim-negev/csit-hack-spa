@@ -42,20 +42,21 @@
 						<a class="nav-link" data-value="contact" href="#">Contact</a>
 					</li>
 
-					<li class="nav-item btn-enter">
-						<!-- войти -->
-						<button class="btn btn-outline-success me-2" type="button">Войти</button>
-					</li>
+					<!-- регистрация и авторизация -->
 					<li class="nav-item btn-register">
 						<!-- регистрация -->
-						<button class="btn btn-outline-success me-2" type="button">Регистрация</button>
+						<button class="" href="#" data-bs-toggle="modal" data-bs-target="#authModalRegister">Регистрация</button>
+					</li>
+					<li class="nav-item btn-log-in">
+						<!-- регистрация -->
+						<button class="" href="#" data-bs-toggle="modal" data-bs-target="#authModalEnter">Авторизация</button>
 					</li>
 				</ul>
 
 				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 					<!-- МОДАЛЬНЫЕ ОКНА ДЛЯ РЕГИСТРАЦИИ И АВТОРИЗАЦИИ -->
-					<!-- Модальное окно для регистрации/авторизации -->
-					<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+
+					<div class="modal fade" id="authModalEnter" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -80,23 +81,31 @@
 						</div>
 					</div>
 
-					<!-- Изменение ваши ссылки "Регистрация" и "Авторизация", чтобы они вызывали модальное окно: -->
-					<!-- left top icons -->
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
-								<i class="fa-regular fa-user"></i>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Регистрация</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Авторизация</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					<!-- МОДАЛЬНЫЕ ОКНА ДЛЯ РЕГИСТРАЦИИ -->
+					<div class="modal fade" id="authModalRegister" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="authModalLabel">Регистрация</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<!-- Форма для входа/регистрации -->
+									<form>
+										<div class="mb-3">
+											<label for="username" class="form-label">Логин</label>
+											<input type="text" class="form-control" id="username" />
+										</div>
+										<div class="mb-3">
+											<label for="password" class="form-label">Пароль</label>
+											<input type="password" class="form-control" id="password" />
+										</div>
+										<button type="submit" class="btn btn-primary">Войти</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<!-- Modal окно корзина-->
 					<li class="nav-item">
