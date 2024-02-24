@@ -3,7 +3,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: black; /*черный фон*/
+	background-image: url('imgs/background.jpg'); /*черный фон*/
 }
 html,
 h1,
@@ -30,7 +30,7 @@ a {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: red;
+	background: #0d7b03eb;
 	border-radius: 10px;
 }
 
@@ -86,4 +86,90 @@ a {
 .d-flex button[type='submit']:hover {
 	background: #0fc928f3;
 	color: #ffffff;
+}
+
+.container1 {
+	padding: 50px;
+	background-color: #f8f9fa; /* Цвет фона контейнера */
+	border-radius: 10px; /* Скругление углов */
+}
+
+.container1 h2 {
+	font-size: 32px; /* Размер шрифта заголовка */
+	color: #343a40; /* Цвет текста заголовка */
+}
+
+.container1 p {
+	font-size: 18px; /* Размер шрифта текста */
+	color: #343a40; /* Цвет текста */
+}
+
+.img-fluid {
+	max-width: 100%; /* Чтобы изображение было адаптивным */
+	height: auto; /* Чтобы сохранить пропорции */
+	border-radius: 10px; /* Скругление углов */
+	margin-top: 20px; /* Отступ сверху */
+}
+
+.course-card {
+	background-color: #ffffff; /* Белый цвет фона */
+	border-radius: 10px; /* Закругление углов */
+	padding: 20px; /* Внутренний отступ */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+/* Изменение размера карточки на различных экранах */
+@media (max-width: 576px) {
+	.courses-card {
+		padding: 10px; /* Уменьшение внутреннего отступа на мобильных устройствах */
+	}
+}
+
+div,
+p {
+	margin-bottom: 0; /*убрать отступ p*/
+}
+
+.main-content {
+	margin-top: 20px; /* отступ с самого верха страницы */
+}
+
+/************ FOOTER ************/
+
+.footer {
+	background-color: #343434;
+}
+
+.footer h4 {
+	color: #ccc;
+	text-transform: uppercase;
+	font-style: 16px;
+	border-bottom: 1px solid #666;
+	padding-bottom: 3px;
+}
+
+.footer a {
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+.footer a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.footer a,
+.footer li {
+	color: #c8c8c8;
+}
+
+.footer li a {
+	/* чтобы вся область была кликабельной */
+	display: block;
+}
+
+.footer-icons a {
+	display: inline-block;
+	margin-right: 15px;
+	font-size: 20px;
 }
