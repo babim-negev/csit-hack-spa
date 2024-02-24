@@ -49,6 +49,8 @@ button2.addEventListener('click', function () {
 	}
 })
 
+/*-----*/
+
 var mycourses = document.getElementById('myCourses')
 mycourses.addEventListener('click', function () {
 	// Custom JavaScript code to execute when the button is clicked
