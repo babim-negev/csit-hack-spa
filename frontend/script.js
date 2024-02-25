@@ -5,7 +5,7 @@ var voiti1 = document.getElementById('voiti1')
 var voiti2 = document.getElementById('voiti2')
 var buttt = document.querySelectorAll('#getCourse')
 
-const rule = 'student';
+const rule = 'student'
 
 voiti1.addEventListener('click', function () {
 	var container = document.querySelector('.container1')
@@ -27,7 +27,7 @@ voiti1.addEventListener('click', function () {
 	}
 
 	// Отправляем POST-запрос на сервер
-	fetch('http://localhost:7777/user/login', {
+	fetch('http://localhost:8080/login', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -47,32 +47,36 @@ voiti1.addEventListener('click', function () {
 			// Обрабатываем ошибку сети или другие ошибки
 			console.error('Произошла ошибка:', error)
 		})
+	
+	courseSearchInput.style.display = 'block' 
+	var searchbtn = getElementById('searchBtn')
+	searchbtn.style.display = 'block'
 })
 
 voiti2.addEventListener('click', function () {
-	
 	var container = document.querySelector('.container1')
 	if (container) {
 		container.style.display = 'none'
 	}
 
-	var selectElement = document.getElementById('mySelect');
-	var analyzeButton = document.getElementById('analyzeButton');
+	var selectElement = document.getElementById('mySelect')
+	var analyzeButton = document.getElementById('analyzeButton')
 
-	var selectedOption = selectElement.options[selectElement.selectedIndex];
-    
-    // Access the value and text content of the selected option
-    var selectedValue = selectedOption.value;
+	var selectedOption = selectElement.options[selectElement.selectedIndex]
 
-	if(selectedValue === 'option2')
-	{
+	// Access the value and text content of the selected option
+	var selectedValue = selectedOption.value
+
+	if (selectedValue === 'option2') {
 		role = 'prepod'
-		buttt.forEach(function(element) {
+		buttt.forEach(function (element) {
 			// Do something with each element
 			element.style.display = 'none'
-		});
+		})
 	}
-
+	courseSearchInput.style.display = 'block'
+	var searchbtn = getElementById('searchBtn')
+	searchbtn.style.display = 'block'
 })
 
 function hideButton() {
@@ -109,12 +113,11 @@ button2.addEventListener('click', function () {
 		myCoursesContainer.style.display = 'none'
 	}
 
-	if(role === 'prepod')
-	{
-		buttt.forEach(function(element) {
+	if (role === 'prepod') {
+		buttt.forEach(function (element) {
 			// Do something with each element
 			element.style.display = 'block'
-		});
+		})
 	}
 })
 
@@ -281,13 +284,3 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 })
-
-
-var username = document.getElementById('username1').value
-var password = document.getElementById('password1').value
-
-// Создаем объект для данных, которые мы хотим отправить на сервер
-var data = {
-	username: username,
-	password: password,
-}
