@@ -1,7 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
-
-import os
 
 class UserLogin(BaseModel):
     username: str
@@ -17,9 +15,10 @@ router = APIRouter(tags=['user'])
 @router.post("/user/login")
 def user_login(usr_log: UserLogin):
     # TODO: токен должны записать на фронте в Cookie
-    return "abobus"
+    return { 'full_name': 'Скуфф Петрович', 'role': 'student' }
 
 @router.post("/user/register")
-def user_register(usr_reg: UserRegister):
+def user_register(usr_reg: UserRegister, response: Response):
     # TODO: работа с бд, регистрация
-    return "amogus"
+    response.status_code = 201
+    return
