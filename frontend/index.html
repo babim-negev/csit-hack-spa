@@ -105,7 +105,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a class="dropdown-item" href="#" style="color: #000000">Все курсы</a>
+								<a id="allCourses" class="dropdown-item" href="#" style="color: #000000">Все курсы</a>
 							</li>
 							<li>
 								<a id="myCourses" class="dropdown-item" href="#" style="color: #000000">Мои курсы</a>
@@ -121,8 +121,8 @@
 					</li>
 				</ul>
 				<!-- Поиск search справа -->
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+				<form class="d-flex" id="courseSearchForm" role="search">
+					<input class="form-control me-2" type="search" id="courseSearchInput" placeholder="Search" aria-label="Search" />
 					<button class="nav-link" type="submit">Поиск</button>
 				</form>
 			</div>
@@ -157,7 +157,6 @@
 								<h4><a>Машинно-зависимые языки программирования</a></h4>
 								<p>МЗЯП для студентов 2 курса!</p>
 								<p>Преподаватель: Федорова Антонина Гавриловна</p>
-								<p>Курс: 2</p>
 								<p>Группа: 251</p>
 								<div class="course-bottom-details d-flex justify-content-between">
 									<div class="password-input">
@@ -177,7 +176,6 @@
 								<h4><a>Алгебра и геометрия</a></h4>
 								<p>АлГем для студентов 1 курса!</p>
 								<p>Преподаватель: Букушева Алия Владимировна</p>
-								<p>Курс: 1</p>
 								<p>Группа: 151</p>
 								<div class="course-bottom-details d-flex justify-content-between">
 									<div class="password-input">
@@ -197,7 +195,6 @@
 								<h4><a>Теоретическая информатика</a></h4>
 								<p>Теоретическая математика для студентов 1 курса!</p>
 								<p>Преподаватель: Иванов Александр Сергеевич</p>
-								<p>Курс: 1</p>
 								<p>Группа: 151</p>
 								<div class="course-bottom-details d-flex justify-content-between">
 									<div class="password-input">
@@ -235,7 +232,7 @@
 		</div>
 
 		<!-- FOOTER -->
-		<footer>
+		<!-- <footer>
 			<section class="footer">
 				<div class="container">
 					<div class="row">
@@ -243,15 +240,13 @@
 							<h4>Информация</h4>
 							<ul class="list-unstyled">
 								<li><a href="#">Главная</a></li>
-								<li><a href="#">О сайте</a></li>
-								<li><a href="#">Контакты</a></li>
 							</ul>
 						</div>
 
 						<div class="col-md-3 col-6">
-							<h4>Время работы</h4>
+							<h4>Адрес</h4>
 							<ul class="list-unstyled">
-								<li>Саратов, ул. Скуфа</li>
+								<li>Саратов, ул. Вольская, 10а</li>
 							</ul>
 						</div>
 
@@ -259,10 +254,10 @@
 							<h4>Контакты</h4>
 							<ul class="list-unstyled">
 								<li>
-									<a href="tel:+79432532125">+7 943 253-21-25</a>
+									<a href="tel:+79432532125">+7 964 999-91-46</a>
 								</li>
 								<li>
-									<a href="tel:+79432232125">+7 925 253-26-15</a>
+									<a href="tel:+79432232125">+7 904 241-36-97</a>
 								</li>
 							</ul>
 						</div>
@@ -272,13 +267,13 @@
 							<div class="footer-icons">
 								<a href="#"><i class="fa-brands fa-vk"></i></a>
 								<a href="#"><i class="fa-brands fa-telegram" style="color: #74c0fc"></i></a>
-								<a href="#"><i class="fa-brands fa-youtube" style="color: #e3301c"></i></a>
+								<a href="#"><i class="fa-brands fa-github" style="color: #ffffff"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-		</footer>
+		</footer> -->
 		<!-- Скрипты -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
