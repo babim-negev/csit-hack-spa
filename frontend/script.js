@@ -27,7 +27,7 @@ voiti1.addEventListener('click', function () {
 	}
 
 	// Отправляем POST-запрос на сервер
-	fetch('http://localhost:8080/login', {
+	fetch('http://localhost:7777/user/login', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
