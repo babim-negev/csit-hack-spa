@@ -6,6 +6,8 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	color: #444444;
+	font-size: 16px;
+	font-weight: 300;
 }
 
 a {
@@ -178,7 +180,7 @@ a {
 .course-card {
 	background-color: #ffffff; /* Белый цвет фона */
 	border-radius: 10px; /* Закругление углов */
-	padding: 20px; /* Внутренний отступ */
+	padding: 10px; /* Внутренний отступ */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
@@ -233,7 +235,6 @@ p {
 
 .footer {
 	background-color: #343434;
-	position: fixed;
 	bottom: 0;
 	width: 100%;
 	background-color: #333; /* Цвет фона футера */
@@ -273,4 +274,13 @@ p {
 	display: inline-block;
 	margin-right: 15px;
 	font-size: 20px;
+}
+
+.leave-course-button {
+	background-color: red;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
 }
