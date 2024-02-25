@@ -27,4 +27,4 @@ class User(Base):
 def get_db():
     return create_engine(CON_STR, pool_recycle=3600, echo=True)
 
-Base.metadata.create_all(get_db())
+get_db().connect()
