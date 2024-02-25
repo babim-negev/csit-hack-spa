@@ -9,12 +9,20 @@ voiti1.addEventListener('click', function () {
 	if (container) {
 		container.style.display = 'none'
 	}
+	var hz = document.getElementById('coursesContainer')
+	if (hz) {
+		hz.style.display = 'block'
+	}
 })
 
 voiti2.addEventListener('click', function () {
 	var container = document.querySelector('.container1')
 	if (container) {
 		container.style.display = 'none'
+	}
+	var hz = document.getElementById('coursesContainer')
+	if (hz) {
+		hz.style.display = 'block'
 	}
 })
 
@@ -47,6 +55,10 @@ button2.addEventListener('click', function () {
 	if (container) {
 		container.style.display = 'block'
 	}
+	var myCoursesContainer = document.getElementById('myCoursesContainer')
+	if (myCoursesContainer) {
+		myCoursesContainer.style.display = 'none'
+	}
 })
 
 /*-----*/
@@ -59,6 +71,20 @@ mycourses.addEventListener('click', function () {
 	hz.style.display = 'none'
 	var myc = document.getElementById('myCoursesContainer')
 	myc.style.display = 'block'
+	var container1 = document.querySelector('.container1')
+	container1.style.display = 'none'
+})
+
+var allcourses = document.getElementById('allCourses')
+allcourses.addEventListener('click', function () {
+	// Custom JavaScript code to execute when the button is clicked
+	// You can perform any desired actions here
+	var hz = document.getElementById('coursesContainer')
+	hz.style.display = 'block'
+	var myc = document.getElementById('myCoursesContainer')
+	myc.style.display = 'none'
+	var container1 = document.querySelector('.container1')
+	container1.style.display = 'none'
 })
 
 function outButton() {
@@ -91,6 +117,9 @@ addToMyCoursesButtons.forEach(function (button) {
 		// Создаем копию элемента курса
 		var clonedCourse = courseCard.cloneNode(true)
 
+		// Добавляем класс course-card к скопированному элементу курса
+		clonedCourse.classList.add('course-card')
+
 		// Находим контейнер "Мои курсы"
 		var myCoursesContainer = document.getElementById('myCoursesContainer')
 
@@ -110,6 +139,88 @@ addToMyCoursesButtons.forEach(function (button) {
 		var clonedPasswordInput = clonedCourse.querySelector('.password-input')
 		if (clonedPasswordInput) {
 			clonedPasswordInput.remove()
+		}
+
+		var leaveCourseButton = document.createElement('button')
+		leaveCourseButton.textContent = 'Покинуть курс'
+		leaveCourseButton.classList.add('leave-course-button')
+		leaveCourseButton.addEventListener('click', function () {
+			// Удаляем карточку курса из контейнера "Мои курсы"
+			clonedCourse.remove()
+
+			// Восстанавливаем активность кнопки "Записаться на курс"
+			button.disabled = false
+			button.textContent = 'Записаться на курс'
+		})
+		clonedCourse.querySelector('.course-links').appendChild(leaveCourseButton)
+	})
+})
+
+var courseSearchForm = document.getElementById('courseSearchForm')
+var courseSearchInput = document.getElementById('courseSearchInput')
+
+// Добавляем обработчик события для формы поиска
+courseSearchForm.addEventListener('submit', function (event) {
+	// Предотвращаем отправку формы по умолчанию
+	event.preventDefault()
+
+	// Получаем введенный пользователем текст из поля ввода
+	var searchText = courseSearchInput.value.toLowerCase().trim()
+
+	// Находим все карточки курсов
+	var courseCards = document.querySelectorAll('#coursesContainer .course-card')
+	var mycourseCards = document.querySelectorAll('#myCoursesContainer .course-card')
+
+	// Проходим по каждой карточке курса
+	courseCards.forEach(function (courseCard) {
+		// Находим элемент с названием курса в текущей карточке
+		var courseTitle = courseCard.querySelector('h4 a')
+
+		// Проверяем, содержит ли название курса введенный текст
+		if (courseTitle.textContent.toLowerCase().includes(searchText)) {
+			// Если содержит, показываем карточку курса
+			courseCard.style.display = 'block'
+		} else {
+			// Если не содержит, скрываем карточку курса
+			courseCard.style.display = 'none'
+		}
+	})
+	mycourseCards.forEach(function (courseCard) {
+		// Находим элемент с названием курса в текущей карточке
+		var courseTitle = courseCard.querySelector('h4 a')
+
+		// Проверяем, содержит ли название курса введенный текст
+		if (courseTitle.textContent.toLowerCase().includes(searchText)) {
+			// Если содержит, показываем карточку курса
+			courseCard.style.display = 'block'
+		} else {
+			// Если не содержит, скрываем карточку курса
+			courseCard.style.display = 'none'
+		}
+	})
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+	// Находим ссылку SkufCourse
+	var skufCourseLink = document.querySelector('.navbar-brand')
+
+	// Находим контейнер container1
+	var container1 = document.querySelector('.container1')
+
+	// Добавляем обработчик события для ссылки SkufCourse
+	skufCourseLink.addEventListener('click', function (event) {
+		// Предотвращаем переход по ссылке
+		event.preventDefault()
+		// Custom JavaScript code to execute when the button is clicked
+		// You can perform any desired actions here
+		var hz = document.getElementById('coursesContainer')
+		hz.style.display = 'none'
+		var myc = document.getElementById('myCoursesContainer')
+		myc.style.display = 'none'
+
+		// Переключаем отображение контейнера container1
+		if (container1.style.display === 'none') {
+			container1.style.display = 'block'
 		}
 	})
 })
