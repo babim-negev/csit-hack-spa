@@ -3,6 +3,9 @@ var button1 = document.getElementById('in1')
 var button2 = document.getElementById('person')
 var voiti1 = document.getElementById('voiti1')
 var voiti2 = document.getElementById('voiti2')
+var buttt = document.querySelectorAll('#getCourse')
+
+const rule = 'student';
 
 voiti1.addEventListener('click', function () {
 	var container = document.querySelector('.container1')
@@ -16,14 +19,29 @@ voiti1.addEventListener('click', function () {
 })
 
 voiti2.addEventListener('click', function () {
+	
 	var container = document.querySelector('.container1')
 	if (container) {
 		container.style.display = 'none'
 	}
-	var hz = document.getElementById('coursesContainer')
-	if (hz) {
-		hz.style.display = 'block'
+
+	var selectElement = document.getElementById('mySelect');
+	var analyzeButton = document.getElementById('analyzeButton');
+
+	var selectedOption = selectElement.options[selectElement.selectedIndex];
+    
+    // Access the value and text content of the selected option
+    var selectedValue = selectedOption.value;
+
+	if(selectedValue === 'option2')
+	{
+		role = 'prepod'
+		buttt.forEach(function(element) {
+			// Do something with each element
+			element.style.display = 'none'
+		});
 	}
+
 })
 
 function hideButton() {
@@ -58,6 +76,14 @@ button2.addEventListener('click', function () {
 	var myCoursesContainer = document.getElementById('myCoursesContainer')
 	if (myCoursesContainer) {
 		myCoursesContainer.style.display = 'none'
+	}
+
+	if(role === 'prepod')
+	{
+		buttt.forEach(function(element) {
+			// Do something with each element
+			element.style.display = 'block'
+		});
 	}
 })
 
