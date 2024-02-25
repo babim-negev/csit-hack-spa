@@ -1,4 +1,4 @@
-from sqlalchemy import String, create_engine
+from sqlalchemy import String, create_engine, Engine
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -24,7 +24,7 @@ class User(Base):
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, login={self.login!r}), fullname={self.fullname!r}"
     
-def get_db():
+def get_db() -> Engine:
     return create_engine(CON_STR, pool_recycle=3600, echo=True)
 
 get_db().connect()
