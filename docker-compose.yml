@@ -21,7 +21,8 @@ services:
       - DB_NAME=scufdb
       - DB_ADDR=postgres
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
   gitserver:
     image: rockstorm/git-server
     volumes:
@@ -36,5 +37,11 @@ services:
       - "POSTGRES_DB=scufdb"
     expose:
       - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 volumes:
   git-repos:

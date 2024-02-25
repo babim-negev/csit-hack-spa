@@ -5,4 +5,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY app app
 
-CMD ["uvicorn", "app.main:app"]
+COPY alembic alembic
+COPY alembic.ini .
+
+CMD ["/bin/bash", "-c", "alembic upgrade head && uvicorn app.main:app"]
