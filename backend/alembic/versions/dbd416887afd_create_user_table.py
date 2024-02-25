@@ -24,6 +24,20 @@ def upgrade() -> None:
                     sa.Column('password', sa.String(50)),
                     sa.Column('full_name', sa.String(30))
                     )
+    op.create_table('course',
+                    sa.Column('id', sa.Integer, primary_key=True),
+                    sa.Column('title', sa.String(42)),
+                    sa.Column('password', sa.String(50)),
+                    sa.Column('teacher_id', sa.Integer)
+                    )
+    op.create_foreign_key(
+        "fk_course_teacher",
+        "course",
+        "user",
+        ["user_id"],
+        ["id"],
+    )
+
 
 
 def downgrade() -> None:
