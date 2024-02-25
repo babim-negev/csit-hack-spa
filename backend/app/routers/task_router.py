@@ -1,20 +1,14 @@
-from fastapi import APIRouter, Depends
-from fastapi.security import HTTPBasicCredentials
-from typing import Annotated
-
-from ..auth import security
+from fastapi import APIRouter
 
 router = APIRouter(tags=['task'])
 
-from .. import utility
-
 @router.post("/course/task/create")
-def create_task(course_id: int, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def create_task(course_id: int):
     return "bruh"
 
 
 @router.get("/course/task/get_all")
-def get_all_course_tasks(course_id: int, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def get_all_course_tasks(course_id: int):
     return [
         {
             'name': "Доказать теорему ферма",
@@ -23,14 +17,12 @@ def get_all_course_tasks(course_id: int, credentials: Annotated[HTTPBasicCredent
     ]
 
 @router.get("/course/task/get")
-def get_task_description(task_id: int, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def get_task_description(task_id: int):
     return {
         'name': "Сделать консольное приложение A + B",
         'description': "extreme markdown **OMG**"
     }
 
 @router.post("/course/task/gen_repo")
-def get_repo(task_id: int, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
-    reponame = credentials.username + str(task_id)
-    with utility.get_repo(reponame) as user_repo:
-        return "git clone ssh://git@localhost:2222/srv/git/" + reponame
+def get_repo(task_id: int):
+    return "git@ip:2222/" + task_id

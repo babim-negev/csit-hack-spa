@@ -27,7 +27,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-4">
 					<li class="nav-item">
-						<a class="nav-link" data-value="about" href="#">О нас</a>
+						<a id = "ert" class="nav-link" data-value="about" href="#">О нас</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" data-value="contact" href="#">Контакты</a>
@@ -96,8 +96,8 @@
 										<label for="password" class="form-label">Роль </label>
 
 									<select id="mySelect" style="width: 150px; border-radius: 10px;background-color: #ddedf9; ">
-										<option value="option1" style =" background-color: #74c0fc">Ученик</option>
-										<option value="option2" style="background-color: #74c0fc;">Преподователь</option>
+										<option value = "option1" style =" background-color: #74c0fc">Ученик</option>
+										<option value = "option2" style = "background-color: #74c0fc;">Преподователь</option>
 									</select>
 									</form>
 									<button id="voiti2" class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
@@ -116,7 +116,7 @@
 								<a id="allCourses" class="dropdown-item" href="#" style="color: #000000">Все курсы</a>
 							</li>
 							<li>
-								<a id="myCourses" class="dropdown-item" href="#" style="color: #000000">Мои курсы</a>
+								<a id="myCourses" class="dropdown-item"  href="#" style="color: #000000">Мои курсы</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider" />
@@ -137,90 +137,36 @@
 		</nav>
 		<section class="main-content">
 			<!-- Курсы -->
-			<div class="container" id="coursesContainer" style="display: none">
-				<div class="row">
-					<!-- bootstrap использует 12-колоночную сетку, поэтому lg-4 означает поделить на 4 и теперь у нас будет 4 части из 12-колоночной сетки (то есть 1/3) то есть 3 штуки в ряд-->
-					<div class="col-lg-12 col-sm-12 mb-3">
-						<div class="course-card">
-							<div class="course-details">
-								<h4><a>Математический анализ</a></h4>
-								<p>Математический анализ для студентов 1 курса!</p>
-								<p>Преподаватель: Сахно Людмила Владимировна</p>
-								<p>Группа: 151</p>
-								<div class="course-bottom-details d-flex justify-content-between">
-									<div class="password-input">
-										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
-									</div>
-									<div class="course-links">
-										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
-										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-sm-12 mb-3">
-						<div class="course-card">
-							<div class="course-details">
-								<h4><a>Машинно-зависимые языки программирования</a></h4>
-								<p>МЗЯП для студентов 2 курса!</p>
-								<p>Преподаватель: Федорова Антонина Гавриловна</p>
-								<p>Группа: 251</p>
-								<div class="course-bottom-details d-flex justify-content-between">
-									<div class="password-input">
-										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
-									</div>
-									<div class="course-links">
-										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
-										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-sm-12 mb-3">
-						<div class="course-card">
-							<div class="course-details">
-								<h4><a>Алгебра и геометрия</a></h4>
-								<p>АлГем для студентов 1 курса!</p>
-								<p>Преподаватель: Букушева Алия Владимировна</p>
-								<p>Группа: 151</p>
-								<div class="course-bottom-details d-flex justify-content-between">
-									<div class="password-input">
-										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
-									</div>
-									<div class="course-links">
-										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
-										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-sm-12 mb-3">
-						<div class="course-card">
-							<div class="course-details">
-								<h4><a>Теоретическая информатика</a></h4>
-								<p>Теоретическая математика для студентов 1 курса!</p>
-								<p>Преподаватель: Иванов Александр Сергеевич</p>
-								<p>Группа: 151</p>
-								<div class="course-bottom-details d-flex justify-content-between">
-									<div class="password-input">
-										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
-									</div>
-									<div class="course-links">
-										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
-										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</section>
 
-		<div id="myCoursesContainer" class="container" style="display: none">
+		<!-- Создать курс -->
+		<div class="container" id="conterrr" style = "display: none;">
+			<input type="text" id="subjectInput" placeholder="Название предмета" />
+
+			<input type="text" id="teacherInput" placeholder="ФИО преподавателя" />
+
+			<input type="text" id="groupInput" placeholder="Номер группы" />
+
+			<input type="text" id="descriptionInput" placeholder="Ваш репозиторий" />
+
+			<input type="text" id="passwordInput" placeholder="Пароль" />
+
+			<button id="addTaskBtn">Добавить курс</button>
+
+			<h2 id="courses1" style="color: #ffffff; ">Мои курсы</h2>
+			<!-- список моих курсов -->
+			<ul id="completedTaskList"></ul>
+
+			<h2 id="courses" style="color: #ffffff; ">Все курсы</h2>
+			<!-- список всех курсов -->
+			<ul id="taskList"></ul>
+		</div>
+
+
+
+
+		<div id="myCoursesContainer" class="container" style="">
 			<div class="row">
 				<!-- Здесь будут отображаться курсы, добавленные пользователем -->
 			</div>

@@ -4,8 +4,26 @@ var button2 = document.getElementById('person')
 var voiti1 = document.getElementById('voiti1')
 var voiti2 = document.getElementById('voiti2')
 var buttt = document.querySelectorAll('#getCourse')
+var buttt1 = document.querySelectorAll('#inputPassword')
 
-const rule = 'student'
+
+
+var role = 'student';
+var button122 = document.getElementById('myCourses')
+
+button122.addEventListener('click', function () {
+	var button = document.getElementById('conterrr')
+	
+
+	// Hide the button by setting its display property to "none"
+
+	if(role === 'prepod')
+	{
+		button.style.display = 'block'
+	}
+	
+
+})
 
 voiti1.addEventListener('click', function () {
 	var container = document.querySelector('.container1')
@@ -27,7 +45,7 @@ voiti1.addEventListener('click', function () {
 	}
 
 	// Отправляем POST-запрос на сервер
-	fetch('http://localhost:8080/login', {
+	fetch('http://localhost:7777/user/login', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -38,6 +56,17 @@ voiti1.addEventListener('click', function () {
 			if (response.ok) {
 				// Обрабатываем успешный ответ
 				console.log('Успешно вошли в систему')
+				// Пример ответа от сервера (замените этим ваш реальный ответ)
+
+				// Преобразование JSON строки в объект JavaScript
+				const data = JSON.parse(respone);
+
+				// Теперь вы можете работать с данными как с объектом JavaScript
+				role = data.role
+				console.log(data.fullname); // Выведет: John
+				console.log(data.role); // Выведет: 30
+				console.log(data.message); // Выведет: New York
+
 			} else {
 				// Обрабатываем ошибку
 				console.error('Ошибка входа:', response.statusText)
@@ -47,36 +76,53 @@ voiti1.addEventListener('click', function () {
 			// Обрабатываем ошибку сети или другие ошибки
 			console.error('Произошла ошибка:', error)
 		})
-	
-	courseSearchInput.style.display = 'block' 
-	var searchbtn = getElementById('searchBtn')
-	searchbtn.style.display = 'block'
+
+
+		if(role === 'prepod')
+		{
+			buttt.forEach(function(element) {
+				// Do something with each element
+				element.style.display = 'none'
+			});
+			buttt1.forEach(function(element) {
+				// Do something with each element
+				element.style.display = 'none'
+			});
+		}
 })
 
 voiti2.addEventListener('click', function () {
+	
 	var container = document.querySelector('.container1')
 	if (container) {
 		container.style.display = 'none'
 	}
 
-	var selectElement = document.getElementById('mySelect')
-	var analyzeButton = document.getElementById('analyzeButton')
+	var selectElement = document.getElementById('mySelect');
+	var analyzeButton = document.getElementById('analyzeButton');
 
-	var selectedOption = selectElement.options[selectElement.selectedIndex]
+	var selectedOption = selectElement.options[selectElement.selectedIndex];
+    
+    // Access the value and text content of the selected option
+    var selectedValue = selectedOption.value;
 
-	// Access the value and text content of the selected option
-	var selectedValue = selectedOption.value
-
-	if (selectedValue === 'option2') {
-		role = 'prepod'
-		buttt.forEach(function (element) {
+	console.log(selectedValue)
+	if(selectedValue === 'option2')
+	{
+		buttt.forEach(function(element) {
 			// Do something with each element
 			element.style.display = 'none'
-		})
+		});
+		buttt1.forEach(function(element) {
+			// Do something with each element
+			element.style.display = 'none'
+		});
+
+		role = 'prepod'	
 	}
-	courseSearchInput.style.display = 'block'
-	var searchbtn = getElementById('searchBtn')
-	searchbtn.style.display = 'block'
+	else
+		role = 'student'
+
 })
 
 function hideButton() {
@@ -91,8 +137,13 @@ function hideButton() {
 	button2.style.display = 'block'
 }
 
+
 var button2 = document.getElementById('outButton')
 button2.addEventListener('click', function () {
+
+
+	var button123456 = document.getElementById('conterrr')
+	button123456.style.display = 'none'
 	// Custom JavaScript code to execute when the button is clicked
 	// You can perform any desired actions here
 	var hz = document.getElementById('coursesContainer')
@@ -104,21 +155,11 @@ button2.addEventListener('click', function () {
 	button1.style.display = 'block'
 	button3.style.display = 'none'
 	hz.style.display = 'none'
-	var container = document.querySelector('.container1')
-	if (container) {
-		container.style.display = 'block'
-	}
-	var myCoursesContainer = document.getElementById('myCoursesContainer')
-	if (myCoursesContainer) {
-		myCoursesContainer.style.display = 'none'
-	}
+	
 
-	if (role === 'prepod') {
-		buttt.forEach(function (element) {
-			// Do something with each element
-			element.style.display = 'block'
-		})
-	}
+	// Hide the button by setting its display property to "none"
+
+	role = 'student'
 })
 
 /*-----*/
@@ -281,6 +322,143 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Переключаем отображение контейнера container1
 		if (container1.style.display === 'none') {
 			container1.style.display = 'block'
+		}
+	})
+})
+
+
+var username = document.getElementById('username1').value
+var password = document.getElementById('password1').value
+
+// Создаем объект для данных, которые мы хотим отправить на сервер
+var data = {
+	username: username,
+	password: password,
+}
+
+
+
+
+//-----------------------------------------------------
+// Добавление курсов
+
+document.addEventListener('DOMContentLoaded', function () {
+	// список все курсы
+	const completedTaskList = document.getElementById('completedTaskList')
+
+	// кнопка создать!!! курс! а не добавить
+	const addTaskBtn = document.getElementById('addTaskBtn')
+
+	// Получаем список добавленных курсов
+	const taskList = document.getElementById('taskList')
+
+	function addTask(subjectText, teacherText, groupText, descriptionText, passwordText) {
+		const li = document.createElement('li')
+
+		li.classList.add('task-container')
+
+		li.innerHTML = `
+        <p>Дисциплина: <span class="subject-text">${subjectText}</span></p>
+        <p>Преподаватель: <span class="teacher-text">${teacherText}</span></p>
+        <p>Группа: <span class="group-text">${groupText}</span></p>
+        <p>Ваш репозиторий: <span class="description-text">${descriptionText}</span></p>
+        <p>Пароль: <span class="password-text">${'*'.repeat(passwordText.length)}</span></p>
+
+        <button class="edit-btn">Редактировать</button>
+        <button class="delete-btn">Удалить</button>
+        <button class="save-btn">Добавить в мои курсы</button>
+    `
+
+		// Пример добавления стилей
+		li.style.backgroundColor = 'white' // Задаем фоновый цвет
+		li.style.borderRadius = '10px' // Добавляем закругление
+		li.style.padding = '10px' // Добавляем отступы
+		li.style.marginBottom = '20px'
+
+		const clonedLi = li.cloneNode(true) // Создаем копию элемента для второго списка
+		li.querySelector('.save-btn').remove() // Удаляем кнопку "Сохранить" из копии
+
+		clonedLi.querySelector('.edit-btn').disabled = true // Делаем кнопку редактирования недоступной для li
+		clonedLi.querySelector('.delete-btn').disabled = true // Делаем кнопку удаления недоступной для li
+
+		completedTaskList.appendChild(li)
+		taskList.appendChild(clonedLi)
+	}
+
+	// Обработчик клика по кнопке "Добавить задачу"
+	addTaskBtn.addEventListener('click', function () {
+		const subjectInput = document.getElementById('subjectInput')
+		const subjectText = subjectInput.value.trim()
+
+		const teacherInput = document.getElementById('teacherInput')
+		const teacherText = teacherInput.value.trim()
+
+		const groupInput = document.getElementById('groupInput')
+		const groupText = groupInput.value.trim()
+
+		const descriptionInput = document.getElementById('descriptionInput')
+		const descriptionText = descriptionInput.value.trim()
+
+		const passwordInput = document.getElementById('passwordInput')
+		const passwordText = passwordInput.value.trim()
+
+		//добавь остальные !== '' если  - обязательное
+		if (subjectText !== '' && teacherText !== '') {
+			addTask(subjectText, teacherText, groupText, descriptionText, passwordText)
+
+			subjectInput.value = ''
+			teacherInput.value = ''
+			groupInput.value = ''
+			passwordInput.value = ''
+			descriptionText.value = ''
+		}
+	})
+
+	// Обработчик клика по кнопке "Редактировать"
+	completedTaskList.addEventListener('click', function (e) {
+		if (e.target && e.target.classList.contains('edit-btn')) {
+			const taskContainer = e.target.closest('.task-container')
+
+			if (taskContainer) {
+				const subjectTextElement = taskContainer.querySelector('.subject-text')
+				const teacherTextElement = taskContainer.querySelector('.teacher-text')
+				const groupTextElement = taskContainer.querySelector('.group-text')
+				const descriptionTextElement = taskContainer.querySelector('.description-text')
+				const passwordTextElement = taskContainer.querySelector('.password-text')
+
+				const newSubjectText = prompt('Введите новую дисциплину:', subjectTextElement.textContent)
+				const newTeacherText = prompt('Введите нового преподавателя:', teacherTextElement.textContent)
+				const newGroupText = prompt('Введите новую группу:', groupTextElement.textContent)
+				const newDescriptionText = prompt('Введите новый репозиторий:', descriptionTextElement.textContent)
+				const newPasswordText = prompt('Введите новый пароль:', passwordTextElement.textContent)
+
+				if (newSubjectText !== null && newTeacherText !== null && newGroupText !== null) {
+					subjectTextElement.textContent = newSubjectText
+					teacherTextElement.textContent = newTeacherText
+					groupTextElement.textContent = newGroupText
+					descriptionTextElement.textContent = newDescriptionText
+					passwordTextElement.textContent = '*'.repeat(newPasswordText.length)
+				}
+			}
+		}
+	})
+
+	// Обработчик клика по кнопке "Удалить"
+	completedTaskList.addEventListener('click', function (e) {
+		if (e.target && e.target.classList.contains('delete-btn')) {
+			const li = e.target.parentNode
+			li.remove()
+		}
+	})
+
+	taskList.addEventListener('click', function (e) {
+		if (e.target && e.target.classList.contains('save-btn')) {
+			const li = e.target.parentNode
+			const clonedLi = li.cloneNode(true)
+			clonedLi.querySelector('.save-btn').remove() // Удаляем кнопку "Сохранить" из копии
+			clonedLi.querySelector('.edit-btn').disabled = false // Делаем кнопку редактирования недоступной для li
+			clonedLi.querySelector('.delete-btn').disabled = false // Делаем кнопку удаления недоступной для li
+			completedTaskList.appendChild(clonedLi)
 		}
 	})
 })

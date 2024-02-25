@@ -1,17 +1,13 @@
-from fastapi import APIRouter, Depends
-from fastapi.security import HTTPBasicCredentials
-from typing import Annotated
-
-from ..auth import security
+from fastapi import APIRouter
 
 router = APIRouter(tags=['course'])
 
 @router.post("/course/create")
-def create_course(credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def create_course():
     return "xz"
 
 @router.get("/course/get_all")
-def get_courses(credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def get_courses():
     # TODO: вынуть из бд курсы, вернуть их
     return [
         {
@@ -26,7 +22,7 @@ def get_courses(credentials: Annotated[HTTPBasicCredentials, Depends(security)])
         }]
 
 @router.get("/course/get_mine")
-def get_mine_courses(credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+def get_mine_courses():
     # TOOD: посмотреть на курсы пользователя, их вернуть
     return [
         {
