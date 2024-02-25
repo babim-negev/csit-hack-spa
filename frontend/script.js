@@ -3,6 +3,9 @@ var button1 = document.getElementById('in1')
 var button2 = document.getElementById('person')
 var voiti1 = document.getElementById('voiti1')
 var voiti2 = document.getElementById('voiti2')
+var buttt = document.querySelectorAll('#getCourse')
+
+const rule = 'student';
 
 voiti1.addEventListener('click', function () {
 	var container = document.querySelector('.container1')
@@ -13,17 +16,63 @@ voiti1.addEventListener('click', function () {
 	if (hz) {
 		hz.style.display = 'block'
 	}
+
+	var username = document.getElementById('username1').value
+	var password = document.getElementById('password1').value
+
+	// Создаем объект для данных, которые мы хотим отправить на сервер
+	var data = {
+		username: username,
+		password: password,
+	}
+
+	// Отправляем POST-запрос на сервер
+	fetch('http://localhost:8080/login', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+		.then(response => {
+			if (response.ok) {
+				// Обрабатываем успешный ответ
+				console.log('Успешно вошли в систему')
+			} else {
+				// Обрабатываем ошибку
+				console.error('Ошибка входа:', response.statusText)
+			}
+		})
+		.catch(error => {
+			// Обрабатываем ошибку сети или другие ошибки
+			console.error('Произошла ошибка:', error)
+		})
 })
 
 voiti2.addEventListener('click', function () {
+	
 	var container = document.querySelector('.container1')
 	if (container) {
 		container.style.display = 'none'
 	}
-	var hz = document.getElementById('coursesContainer')
-	if (hz) {
-		hz.style.display = 'block'
+
+	var selectElement = document.getElementById('mySelect');
+	var analyzeButton = document.getElementById('analyzeButton');
+
+	var selectedOption = selectElement.options[selectElement.selectedIndex];
+    
+    // Access the value and text content of the selected option
+    var selectedValue = selectedOption.value;
+
+	if(selectedValue === 'option2')
+	{
+		role = 'prepod'
+		buttt.forEach(function(element) {
+			// Do something with each element
+			element.style.display = 'none'
+		});
 	}
+
 })
 
 function hideButton() {
@@ -58,6 +107,14 @@ button2.addEventListener('click', function () {
 	var myCoursesContainer = document.getElementById('myCoursesContainer')
 	if (myCoursesContainer) {
 		myCoursesContainer.style.display = 'none'
+	}
+
+	if(role === 'prepod')
+	{
+		buttt.forEach(function(element) {
+			// Do something with each element
+			element.style.display = 'block'
+		});
 	}
 })
 
@@ -224,3 +281,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 })
+
+
+var username = document.getElementById('username1').value
+var password = document.getElementById('password1').value
+
+// Создаем объект для данных, которые мы хотим отправить на сервер
+var data = {
+	username: username,
+	password: password,
+}
