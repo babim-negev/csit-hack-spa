@@ -1,4 +1,5 @@
-fastapi==0.109.2
-uvicorn==0.27.1
-pyjwt==2.8.0
-gitpython==3.1.42
+fastapi
+uvicorn
+python-jose[cryptography]
+passlib[bcrypt]
+gitpython

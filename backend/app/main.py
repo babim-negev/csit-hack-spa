@@ -9,7 +9,12 @@ app.include_router(user_router.router)
 app.include_router(course_router.router)
 app.include_router(task_router.router)
 
-try:
-    repo = Repo('./gitrepos/testrep3.git')
-except NoSuchPathError:
-    repo = Repo.init('./gitrepos/testrep3.git', bare=True)
+def get_repo(path: str) -> Repo:
+    try:
+        return Repo(path)
+    except NoSuchPathError:
+        return Repo.init(path, bare=True)
+
+REPO_DIR = "./gitrepos/"
+
+repo = get_repo(REPO_DIR + "testrepo3.git")
