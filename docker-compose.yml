@@ -9,24 +9,24 @@ services:
   backend:
     build: backend
     volumes:
-      - git-repos:/app/gitrepos/
+      - "git-repos:/app/gitrepos/"
     expose:
       - 8000
     ports:
-      - 7777:8000
+      - "7777:8000"
     environment:
-      - UVICORN_HOST=0.0.0.0
-      - DB_LOGIN=pgusr
-      - DB_PASSWORD=pwd
-      - DB_NAME=scufdb
-      - DB_ADDR=postgres
+      - "UVICORN_HOST=0.0.0.0"
+      - "DB_LOGIN=pgusr"
+      - "DB_PASSWORD=pwd"
+      - "DB_NAME=scufdb"
+      - "DB_ADDR=postgres"
     depends_on:
       postgres:
         condition: service_healthy
   gitserver:
     image: rockstorm/git-server
     volumes:
-      - git-repos:/srv/git
+      - "git-repos:/srv/git"
     ports:
       - 2222:22
   postgres:
@@ -42,6 +42,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    volumes:
+      - "pg-data:/var/lib/postgres/data"
 
 volumes:
   git-repos:
+  pg-data:

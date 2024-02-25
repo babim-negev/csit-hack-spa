@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 
-from .routers import course_router, task_router, user_router
-
 from git import NoSuchPathError, Repo
 from pathlib import Path
+
+from .routers import course_router, task_router, user_router
+import db
 
 app = FastAPI()
 app.include_router(user_router.router)
