@@ -250,3 +250,35 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 })
+
+
+var username = document.getElementById('username1').value
+var password = document.getElementById('password1').value
+
+// Создаем объект для данных, которые мы хотим отправить на сервер
+var data = {
+	username: username,
+	password: password,
+}
+
+// Отправляем POST-запрос на сервер
+fetch('http://localhost:8080/login', {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify(data),
+})
+	.then(response => {
+		if (response.ok) {
+			// Обрабатываем успешный ответ
+			console.log('Успешно вошли в систему')
+		} else {
+			// Обрабатываем ошибку
+			console.error('Ошибка входа:', response.statusText)
+		}
+	})
+	.catch(error => {
+		// Обрабатываем ошибку сети или другие ошибки
+		console.error('Произошла ошибка:', error)
+	})
