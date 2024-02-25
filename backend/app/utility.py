@@ -8,5 +8,5 @@ def get_repo(name: str) -> Repo:
     except NoSuchPathError:
         return Repo.init(path, bare=True)
 
-REPO_DIR = "./gitrepos/"
+REPO_DIR = "app/gitrepos/"
 Path(REPO_DIR).mkdir(parents=True, exist_ok=True)

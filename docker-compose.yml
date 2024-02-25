@@ -9,7 +9,7 @@ services:
   backend:
     build: backend
     volumes:
-      - git-repos:/app/gitrepos/
+      - git-repos:/code/app/gitrepos/
     expose:
       - 8000
     ports:
