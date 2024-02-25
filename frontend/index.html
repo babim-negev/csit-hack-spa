@@ -87,10 +87,18 @@
 											<label for="username" class="form-label">Логин</label>
 											<input type="text" class="form-control" id="username" />
 										</div>
+
 										<div class="mb-3">
 											<label for="password" class="form-label">Пароль</label>
 											<input type="password" class="form-control" id="password" />
 										</div>
+										
+										<label for="password" class="form-label">Роль </label>
+
+									<select id="mySelect" style="width: 150px; border-radius: 10px;background-color: #ddedf9; ">
+										<option value="option1" style =" background-color: #74c0fc">Ученик</option>
+										<option value="option2" style="background-color: #74c0fc;">Преподователь</option>
+									</select>
 									</form>
 									<button id="voiti2" class="btn btn-primary" data-bs-dismiss="modal" onclick="hideButton()" aria-label="Close">Войти</button>
 								</div>
@@ -144,7 +152,7 @@
 										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
 									</div>
 									<div class="course-links">
-										<button class="add-to-my-courses">Записаться на курс</button>
+										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
 										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
 									</div>
 								</div>
@@ -163,7 +171,7 @@
 										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
 									</div>
 									<div class="course-links">
-										<button class="add-to-my-courses">Записаться на курс</button>
+										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
 										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
 									</div>
 								</div>
@@ -182,7 +190,7 @@
 										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
 									</div>
 									<div class="course-links">
-										<button class="add-to-my-courses">Записаться на курс</button>
+										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
 										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
 									</div>
 								</div>
@@ -201,7 +209,7 @@
 										<input type="text" id="inputPassword" placeholder="Введите пароль:" />
 									</div>
 									<div class="course-links">
-										<button class="add-to-my-courses">Записаться на курс</button>
+										<button id = "getCourse" class="add-to-my-courses">Записаться на курс</button>
 										<!-- alert верный пароль-> сообщение добавление в мои курсы, либо пароль неверный-> -->
 									</div>
 								</div>
