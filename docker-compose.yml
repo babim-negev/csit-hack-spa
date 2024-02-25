@@ -16,6 +16,10 @@ services:
       - 7777:8000
     environment:
       - UVICORN_HOST=0.0.0.0
+      - DB_LOGIN=pgusr
+      - DB_PASSWORD=pwd
+      - DB_NAME=scufdb
+      - DB_ADDR=postgres
     depends_on:
       - postgres
   gitserver:
@@ -29,5 +33,6 @@ services:
     environment:
       - "POSTGRES_PASSWORD=pwd"
       - "POSTGRES_USER=pgusr"
+      - "POSTGRES_DB=scufdb"
 volumes:
   git-repos:
