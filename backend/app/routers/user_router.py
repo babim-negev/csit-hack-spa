@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
 
+from .. import db
+
 class UserLogin(BaseModel):
     username: str
     password: str
