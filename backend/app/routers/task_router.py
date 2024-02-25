@@ -31,6 +31,6 @@ def get_task_description(task_id: int, credentials: Annotated[HTTPBasicCredentia
 
 @router.post("/course/task/gen_repo")
 def get_repo(task_id: int, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
-    reponame = credentials.username + task_id
-    user_repo = utility.get_repo(reponame)
-    return "git clone ssh://git@localhost:2222/srv/git/" + user_repo
+    reponame = credentials.username + str(task_id)
+    with utility.get_repo(reponame) as user_repo:
+        return "git clone ssh://git@localhost:2222/srv/git/" + reponame

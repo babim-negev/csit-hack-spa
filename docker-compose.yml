@@ -9,7 +9,7 @@ services:
   backend:
     build: backend
     volumes:
-      - "git-repos:/app/gitrepos/"
+      - git-repos:/app/gitrepos/
     expose:
       - 8000
     ports:
@@ -27,7 +27,7 @@ services:
   gitserver:
     image: rockstorm/git-server
     volumes:
-      - "git-repos:/srv/git"
+      - git-repos:/srv/git
     ports:
       - 2222:22
   postgres:
@@ -44,8 +44,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - "pg-data:/var/lib/postgres/data"
-
+      - pg-data:/var/lib/postgres/data
 volumes:
   git-repos:
   pg-data:

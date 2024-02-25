@@ -10,6 +10,3 @@ def get_repo(name: str) -> Repo:
 
 REPO_DIR = "./gitrepos/"
 Path(REPO_DIR).mkdir(parents=True, exist_ok=True)
-
-repo = get_repo("testrepo3")
-
