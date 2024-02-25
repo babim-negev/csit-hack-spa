@@ -34,5 +34,7 @@ services:
       - "POSTGRES_PASSWORD=pwd"
       - "POSTGRES_USER=pgusr"
       - "POSTGRES_DB=scufdb"
+    expose:
+      - 5432
 volumes:
   git-repos:
