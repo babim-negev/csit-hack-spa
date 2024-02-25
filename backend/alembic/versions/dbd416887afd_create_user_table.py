@@ -34,7 +34,7 @@ def upgrade() -> None:
         "fk_course_teacher",
         "course",
         "user",
-        ["user_id"],
+        ["id"],
         ["id"],
     )
 
